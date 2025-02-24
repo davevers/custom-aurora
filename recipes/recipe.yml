@@ -29,10 +29,6 @@ modules:
   - type: rpm-ostree
     install:
       - ghostty
-      - git-credential-oauth
-      - kitty
-      - neovim
-      - papirus-icon-theme
 
   - type: fonts
     fonts:
