@@ -12,23 +12,25 @@ image-version: stable-daily # latest is also supported if you want new updates A
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - type: akmods
-    base: main # if not specified, classic "main" base is used by default
-    install:
-      - evdi
-
   - type: files
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: rpm-ostree
+    repos:
+      - https://negativo17.org/repos/fedora-multimedia.repo
     install:
       - ghostty
       - git-credential-oauth
       - kitty
       - neovim
       - papirus-icon-theme
+
+  - type: akmods
+    base: main # if not specified, classic "main" base is used by default
+    install:
+      - evdi
 
   - type: fonts
     fonts:
