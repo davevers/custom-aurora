@@ -14,8 +14,11 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
   - type: containerfile
     snippets:
+      - COPY --from=ghcr.io/ublue-os/akmods:main-41 /rpms/ /tmp/rpms
+      - RUN find /tmp/rpms
+      - RUN rpm-ostree install /tmp/rpms/kmods/evdi-kmod-common*.rpm
+
       - COPY --from=ghcr.io/ublue-os/akmods-extra:main-41 /rpms /tmp/rpms
-      - COPY --from=ghcr.io/ublue-os/akmods-extra:main-41 /kernel-rpms /tmp/rpms/kernel
       - RUN find /tmp/rpms
       - RUN rpm-ostree install /tmp/rpms/kmods/kmod-evdi*.rpm
 
