@@ -3,10 +3,10 @@
 set -eoux pipefail
 
 ARCH="$(rpm -E '%_arch')"
-KERNEL="$(rpm -q "${KERNEL_NAME}" --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
+KERNEL="$(rpm -q "kernel" --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
 RELEASE="$(rpm -E '%fedora')"
 
-cp /tmp/ublue-os-akmods-addons/rpmbuild/SOURCES/negativo17-fedora-multimedia.repo /etc/yum.repos.d/
+# cp /tmp/ublue-os-akmods-addons/rpmbuild/SOURCES/negativo17-fedora-multimedia.repo /etc/yum.repos.d/
 
 if [[ "${FEDORA_MAJOR_VERSION}" -ge 42 ]]; then
   if dnf search displaylink | grep -qv "displaylink"; then
