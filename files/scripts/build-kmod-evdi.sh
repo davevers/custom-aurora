@@ -12,7 +12,7 @@ set -e pipefail
 
 ### BUILD evdi (succeed or fail-fast with debug output)
 export CFLAGS="-fno-pie -no-pie"
-dnf config-manager --add-repo=https://negativo17.org/repos/fedora-nvidia.repo
+dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-nvidia.repo
 dnf install -y \
   kmod-evdi*.fc"${RELEASE}.${ARCH}" akmod-evdi-*.fc"${RELEASE}.${ARCH}"
 akmods --force --kernels "${KERNEL}" --kmod evdi
