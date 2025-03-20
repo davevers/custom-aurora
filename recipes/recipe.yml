@@ -12,14 +12,9 @@ image-version: stable-daily # latest is also supported if you want new updates A
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - type: rpm-ostree
-    repos:
-      - https://negativo17.org/repos/fedora-multimedia.repo
-      - https://copr.fedorainfracloud.org/coprs/ublue-os/akmods/repo/fedora-%OS_VERSION%/ublue-os-akmods-fedora-%OS_VERSION%.repo
-
   - type: script
     scripts:
-      - build-kmod-evdi.sh
+      - install-evdi.sh
 
   - type: files
     files:
@@ -32,6 +27,7 @@ modules:
       - libvirt-devel
       - vagrant
       - https://download3.omnissa.com/software/CART25FQ4_LIN64_RPMPkg_2412/Omnissa-Horizon-Client-2412-8.14.0-12437214089.x64.rpm
+      - fedora-41-displaylink-1.14.8-1.github_evdi.x86_64.rpm
 
   - type: initramfs
 
